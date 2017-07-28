@@ -4,6 +4,8 @@ import createHashtagPlugin from 'draft-js-hashtag-plugin'; // eslint-disable-lin
 import createStickerPlugin from 'draft-js-sticker-plugin'; // eslint-disable-line import/no-unresolved
 import createLinkifyPlugin from 'draft-js-linkify-plugin'; // eslint-disable-line import/no-unresolved
 import createMentionPlugin, { defaultSuggestionsFilter } from 'draft-js-mention-plugin'; // eslint-disable-line import/no-unresolved
+import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin'; // eslint-disable-line import/no-unresolved
+import createCounterPlugin from 'draft-js-counter-plugin'; // eslint-disable-line import/no-unresolved
 import createEmojiPlugin from 'draft-js-emoji-plugin'; // eslint-disable-line import/no-unresolved
 import createUndoPlugin from 'draft-js-undo-plugin'; // eslint-disable-line import/no-unresolved
 import {
@@ -25,10 +27,15 @@ const undoPlugin = createUndoPlugin();
 const stickerPlugin = createStickerPlugin({
   stickers,
 });
+const counterPlugin = createCounterPlugin();
+const inlineToolbarPlugin = createInlineToolbarPlugin();
+
 const { MentionSuggestions } = mentionPlugin;
 const { EmojiSuggestions } = emojiPlugin;
 const { StickerSelect } = stickerPlugin;
 const { UndoButton, RedoButton } = undoPlugin;
+const { InlineToolbar } = inlineToolbarPlugin;
+const { CharCounter, WordCounter, LineCounter, CustomCounter } = counterPlugin;
 
 const plugins = [
   emojiPlugin,
@@ -37,6 +44,8 @@ const plugins = [
   linkifyPlugin,
   mentionPlugin,
   undoPlugin,
+  inlineToolbarPlugin,
+  counterPlugin,
 ];
 
 // const contentState = ContentState.createFromBlockArray(convertFromRaw(initialState));
@@ -94,6 +103,11 @@ export default class UnicornEditor extends Component {
           <div className={styles.editorButton}>
             <RedoButton />
           </div>
+          <InlineToolbar/>
+          <div><CharCounter limit={200} /> characters</div>
+          <div><WordCounter limit={30} /> words</div>
+          <div><LineCounter limit={10} /> lines</div>
+
         </div>
       </div>
     );
