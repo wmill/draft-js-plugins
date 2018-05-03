@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { EditorState } from 'draft-js';
 import Editor from 'draft-js-plugins-editor';
 import createUndoPlugin from 'draft-js-undo-plugin';
-import editorStyles from './editorStyles.css';
-import buttonStyles from './buttonStyles.css';
+import './editorStyles.css';
+import './buttonStyles.css';
 
 const theme = {
-  undo: buttonStyles.button,
-  redo: buttonStyles.button,
+  undo: 'button',
+  redo: 'button',
 };
 const undoPlugin = createUndoPlugin({
   undoContent: 'Undo',
@@ -36,7 +36,7 @@ export default class CustomUndoEditor extends Component {
   render() {
     return (
       <div>
-        <div className={editorStyles.editor} onClick={this.focus}>
+        <div className="editor" onClick={this.focus}>
           <Editor
             editorState={this.state.editorState}
             onChange={this.onChange}
@@ -44,7 +44,7 @@ export default class CustomUndoEditor extends Component {
             ref={(element) => { this.editor = element; }}
           />
         </div>
-        <div className={editorStyles.options}>
+        <div className="options">
           <UndoButton />
           <RedoButton />
         </div>

@@ -34,17 +34,18 @@
   padding-left: 8px;
 }
 
-.mentionSuggestionsEntry {
+.mentionSuggestionsEntry,
+.mentionSuggestionsEntryFocused{
   padding: 7px 10px 3px 10px;
   transition: background-color 0.4s cubic-bezier(.27,1.27,.48,.56);
 }
 
-.mentionSuggestionsEntry:active {
+.mentionSuggestionsEntry:active,
+.mentionSuggestionsEntryFocused:active {
   background-color: #cce7ff;
 }
 
 .mentionSuggestionsEntryFocused {
-  composes: mentionSuggestionsEntry;
   background-color: #e6f3ff;
 }
 
@@ -53,9 +54,6 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.mentionSuggestionsEntryText {
 }
 
 .mentionSuggestionsEntryTitle {

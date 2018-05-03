@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import Editor, { createEditorStateWithText } from 'draft-js-plugins-editor';
 import createHashtagPlugin from 'draft-js-hashtag-plugin';
-import editorStyles from './editorStyles.css';
-import hashtagStyles from './hashtagStyles.css';
 
-const hashtagPlugin = createHashtagPlugin({ theme: hashtagStyles });
+import 'draft-js-hashtag-plugin/lib/plugin.css';
+import './editorStyles.css';
+import './hashtagStyles.css';
+
+const hashtagPlugin = createHashtagPlugin({ theme: { hashtag: 'hashtag' }});
 const plugins = [hashtagPlugin];
 const text = 'In this editor, we can even apply our own styles … #design #theme';
 
@@ -26,7 +28,7 @@ export default class CustomHashtagEditor extends Component {
 
   render() {
     return (
-      <div className={editorStyles.editor} onClick={this.focus}>
+      <div className="editor" onClick={this.focus}>
         <Editor
           editorState={this.state.editorState}
           onChange={this.onChange}

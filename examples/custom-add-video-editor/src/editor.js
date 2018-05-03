@@ -3,7 +3,9 @@ import { EditorState } from 'draft-js';
 import Editor from 'draft-js-plugins-editor';
 import createVideoPlugin from 'draft-js-video-plugin';
 import VideoAdd from './VideoAdd';
-import editorStyles from './editorStyles.css';
+
+import 'draft-js-video-plugin/lib/plugin.css';
+import './editorStyles.css';
 
 const videoPlugin = createVideoPlugin();
 
@@ -28,7 +30,7 @@ export default class CustomVideoEditor extends Component {
   render() {
     return (
       <div>
-        <div className={editorStyles.editor} onClick={this.focus} >
+        <div className="editor" onClick={this.focus} >
           <Editor
             editorState={this.state.editorState}
             onChange={this.onChange}

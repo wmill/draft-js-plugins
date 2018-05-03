@@ -1,3 +1,8 @@
+body {
+  font-family: sans-serif;
+  padding: 2em 2em 2em 5em;
+}
+
 .editor {
   box-sizing: border-box;
   border: 1px solid #ddd;

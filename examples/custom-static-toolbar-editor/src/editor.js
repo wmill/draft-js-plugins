@@ -19,8 +19,9 @@ import {
   SubButton,
   SupButton
 } from 'draft-js-buttons';
-import editorStyles from './editorStyles.css';
 
+import 'draft-js-static-toolbar-plugin/lib/plugin.css';
+import './editorStyles.css';
 
 class HeadlinesPicker extends Component {
   componentDidMount() {
@@ -57,8 +58,8 @@ class HeadlinesButton extends Component {
 
   render() {
     return (
-      <div className={editorStyles.headlineButtonWrapper}>
-        <button onClick={this.onClick} className={editorStyles.headlineButton}>
+      <div className="headlineButtonWrapper">
+        <button onClick={this.onClick} className="headlineButton">
           H
         </button>
       </div>
@@ -105,7 +106,7 @@ export default class CustomToolbarEditor extends Component {
   render() {
     return (
       <div>
-        <div className={editorStyles.editor} onClick={this.focus}>
+        <div className="editor" onClick={this.focus}>
           <Editor
             editorState={this.state.editorState}
             onChange={this.onChange}

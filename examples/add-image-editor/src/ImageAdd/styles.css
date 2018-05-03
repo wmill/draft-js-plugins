@@ -19,7 +19,8 @@
   display: none;
 }
 
-.addImageButton {
+.addImageButton,
+.addImagePressedButton {
   box-sizing: border-box;
   background: #fff;
   border: 1px solid #ddd;
@@ -35,20 +36,23 @@
   margin: 0;
 }
 
-.addImageButton:focus {
+.addImageButton:focus,
+.addImagePressedButton:focus{
+
   outline: 0; /* reset for :focus */
 }
 
-.addImageButton:hover {
+.addImageButton:hover,
+.addImagePressedButton:hover{
   background: #f3f3f3;
 }
 
-.addImageButton:active {
+.addImageButton:active,
+.addImagePressedButton:active{
   background: #e6e6e6;
 }
 
 .addImagePressedButton {
-  composes: addImageButton;
   background: #ededed;
 }
 

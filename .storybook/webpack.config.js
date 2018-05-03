@@ -8,7 +8,31 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin'); // eslint-disable-line no-var
 
-console.log('yooooo', path.join(__dirname, '..', 'draft-js-focus-plugin', 'src'));
+const paths = [
+  path.join(__dirname, '..', 'examples'),
+  path.join(__dirname, '..', 'stories'),
+  path.join(__dirname, '..', 'draft-js-plugins-editor', 'src'),
+  path.join(__dirname, '..', 'draft-js-hashtag-plugin', 'src'),
+  path.join(__dirname, '..', 'draft-js-linkify-plugin', 'src'),
+  path.join(__dirname, '..', 'draft-js-anchor-plugin', 'src'),
+  path.join(__dirname, '..', 'draft-js-plugins-utils', 'src'),
+  path.join(__dirname, '..', 'draft-js-mention-plugin', 'src'),
+  path.join(__dirname, '..', 'draft-js-sticker-plugin', 'src'),
+  path.join(__dirname, '..', 'draft-js-undo-plugin', 'src'),
+  path.join(__dirname, '..', 'draft-js-emoji-plugin', 'src'),
+  path.join(__dirname, '..', 'draft-js-drag-n-drop-plugin', 'src'),
+  path.join(__dirname, '..', 'draft-js-drag-n-drop-upload-plugin', 'src'),
+  path.join(__dirname, '..', 'draft-js-inline-toolbar-plugin', 'src'),
+  path.join(__dirname, '..', 'draft-js-static-toolbar-plugin', 'src'),
+  path.join(__dirname, '..', 'draft-js-side-toolbar-plugin', 'src'),
+  path.join(__dirname, '..', 'draft-js-counter-plugin', 'src'),
+  path.join(__dirname, '..', 'draft-js-focus-plugin', 'src'),
+  path.join(__dirname, '..', 'draft-js-alignment-plugin', 'src'),
+  path.join(__dirname, '..', 'draft-js-image-plugin', 'src'),
+  path.join(__dirname, '..', 'draft-js-resizeable-plugin', 'src'),
+  path.join(__dirname, '..', 'draft-js-buttons', 'src'),
+  path.join(__dirname, '..', 'draft-js-video-plugin', 'src'),
+];
 
 module.exports = {
   plugins: [
@@ -18,60 +42,14 @@ module.exports = {
       {
         test: /\.css$/,
         loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
-        include: [
-          path.join(__dirname, '..', 'stories'),
-          path.join(__dirname, '..', 'draft-js-plugins-editor', 'src'),
-          path.join(__dirname, '..', 'draft-js-hashtag-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-linkify-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-anchor-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-plugins-utils', 'src'),
-          path.join(__dirname, '..', 'draft-js-mention-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-sticker-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-undo-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-emoji-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-drag-n-drop-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-drag-n-drop-upload-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-inline-toolbar-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-static-toolbar-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-side-toolbar-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-counter-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-focus-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-alignment-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-image-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-resizeable-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-buttons', 'src'),
-          path.join(__dirname, '..', 'draft-js-video-plugin', 'src'),
-        ],
+        include: paths,
       },
       {
         test: /plugin\.css$/,
         loaders: [
           'style-loader', 'css-loader',
         ],
-        include: [
-          path.join('..', 'stories'),
-          path.join(__dirname, '..', 'draft-js-plugins-editor', 'src'),
-          path.join(__dirname, '..', 'draft-js-hashtag-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-linkify-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-anchor-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-plugins-utils', 'src'),
-          path.join(__dirname, '..', 'draft-js-mention-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-sticker-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-undo-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-emoji-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-drag-n-drop-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-drag-n-drop-upload-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-inline-toolbar-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-static-toolbar-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-side-toolbar-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-counter-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-focus-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-alignment-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-image-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-resizeable-plugin', 'src'),
-          path.join(__dirname, '..', 'draft-js-buttons', 'src'),
-          path.join(__dirname, '..', 'draft-js-video-plugin', 'src'),
-        ],
+        include: paths,
       }, {
         test: /\.(png|jpg|gif|ico)$/,
         use: [
@@ -82,6 +60,7 @@ module.exports = {
   },
   resolve: {
     alias: {
+      'examples': path.join(__dirname, '..', 'examples'),
       'draft-js-plugins-editor': path.join(__dirname, '..', 'draft-js-plugins-editor', 'src'),
       'draft-js-hashtag-plugin': path.join(__dirname, '..', 'draft-js-hashtag-plugin', 'src'),
       'draft-js-linkify-plugin': path.join(__dirname, '..', 'draft-js-linkify-plugin', 'src'),

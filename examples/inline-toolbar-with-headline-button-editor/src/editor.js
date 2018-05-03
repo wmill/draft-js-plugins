@@ -1,11 +1,8 @@
 /* eslint-disable react/no-multi-comp */
 import React, { Component } from 'react';
-
 import Editor, { createEditorStateWithText } from 'draft-js-plugins-editor';
+import createInlineToolbarPlugin, { Separator } from 'draft-js-inline-toolbar-plugin';
 
-import createInlineToolbarPlugin, {
-  Separator,
-} from 'draft-js-inline-toolbar-plugin';
 import {
   ItalicButton,
   BoldButton,
@@ -21,7 +18,9 @@ import {
   SubButton,
   SupButton,
 } from 'draft-js-buttons';
-import editorStyles from './editorStyles.css';
+
+import 'draft-js-inline-toolbar-plugin/lib/plugin.css';
+import './editorStyles.css';
 
 class HeadlinesPicker extends Component {
   componentDidMount() {
@@ -66,8 +65,8 @@ class HeadlinesButton extends Component {
 
   render() {
     return (
-      <div onMouseDown={this.onMouseDown} className={editorStyles.headlineButtonWrapper}>
-        <button onClick={this.onClick} className={editorStyles.headlineButton}>
+      <div onMouseDown={this.onMouseDown} className="headlineButtonWrapper">
+        <button onClick={this.onClick} className="headlineButton">
           H
         </button>
       </div>
@@ -113,7 +112,7 @@ export default class CustomInlineToolbarEditor extends Component {
 
   render() {
     return (
-      <div className={editorStyles.editor} onClick={this.focus}>
+      <div className="editor" onClick={this.focus}>
         <Editor
           editorState={this.state.editorState}
           onChange={this.onChange}

@@ -1,12 +1,31 @@
 import React, { Component } from 'react';
 
 import Editor, { createEditorStateWithText } from 'draft-js-plugins-editor';
-
 import createSideToolbarPlugin from 'draft-js-side-toolbar-plugin';
-import editorStyles from './editorStyles.css';
-import buttonStyles from './buttonStyles.css';
-import toolbarStyles from './toolbarStyles.css';
-import blockTypeSelectStyles from './blockTypeSelectStyles.css';
+
+import 'draft-js/dist/Draft.css';
+import 'draft-js-side-toolbar-plugin/lib/plugin.css';
+import './editorStyles.css';
+import './buttonStyles.css';
+import './toolbarStyles.css';
+import './blockTypeSelectStyles.css';
+
+const blockTypeSelectStyles = {
+  blockType: 'blockType',
+  space: 'spacer',
+  popup: 'popup'
+}
+
+const toolbarStyles = {
+  wrapper: 'wrapper'
+}
+
+const buttonStyles = {
+  wrapper: 'wrapper',
+  buttonWrapper: 'buttonWrapper',
+  button: 'button',
+  active: 'active',
+}
 
 const sideToolbarPlugin = createSideToolbarPlugin({
   theme: { buttonStyles, toolbarStyles, blockTypeSelectStyles }
@@ -33,7 +52,7 @@ export default class CustomSideToolbarEditor extends Component {
 
   render() {
     return (
-      <div className={editorStyles.editor} onClick={this.focus}>
+      <div className="editor" onClick={this.focus}>
         <Editor
           editorState={this.state.editorState}
           onChange={this.onChange}

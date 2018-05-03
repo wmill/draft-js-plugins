@@ -5,20 +5,16 @@ import {
 } from 'draft-js';
 
 import Editor, { composeDecorators } from 'draft-js-plugins-editor';
-
 import createImagePlugin from 'draft-js-image-plugin';
-
 import createAlignmentPlugin from 'draft-js-alignment-plugin';
-
 import createFocusPlugin from 'draft-js-focus-plugin';
-
 import createResizeablePlugin from 'draft-js-resizeable-plugin';
-
 import createBlockDndPlugin from 'draft-js-drag-n-drop-plugin';
 
-import createDragNDropUploadPlugin from 'draft-js-drag-n-drop-upload-plugin';
-import editorStyles from './editorStyles.css';
-import mockUpload from './mockUpload';
+import 'draft-js-image-plugin/lib/plugin.css';
+import 'draft-js-alignment-plugin/lib/plugin.css';
+import 'draft-js-focus-plugin/lib/plugin.css';
+import './editorStyles.css';
 
 const focusPlugin = createFocusPlugin();
 const resizeablePlugin = createResizeablePlugin();
@@ -34,13 +30,7 @@ const decorator = composeDecorators(
 );
 const imagePlugin = createImagePlugin({ decorator });
 
-const dragNDropFileUploadPlugin = createDragNDropUploadPlugin({
-  handleUpload: mockUpload,
-  addImage: imagePlugin.addImage,
-});
-
 const plugins = [
-  dragNDropFileUploadPlugin,
   blockDndPlugin,
   focusPlugin,
   alignmentPlugin,
@@ -110,7 +100,7 @@ export default class CustomImageEditor extends Component {
   render() {
     return (
       <div>
-        <div className={editorStyles.editor} onClick={this.focus}>
+        <div className="editor" onClick={this.focus}>
           <Editor
             editorState={this.state.editorState}
             onChange={this.onChange}

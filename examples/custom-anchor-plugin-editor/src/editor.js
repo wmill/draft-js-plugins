@@ -7,15 +7,33 @@ import {
   BoldButton,
   UnderlineButton,
 } from 'draft-js-buttons';
-import editorStyles from './editorStyles.css';
-import buttonStyles from './buttonStyles.css';
-import toolbarStyles from './toolbarStyles.css';
-import linkStyles from './linkStyles.css';
+
+import './editorStyles.css';
+import './buttonStyles.css';
+import './toolbarStyles.css';
+import './linkStyles.css';
+
+const buttonStyles = {
+  buttonWrapper: 'buttonWrapper',
+  button: 'button',
+  active: 'active'
+}
+
+const linkStyles = {
+  input: 'input',
+  inputInvalid: 'inputInvalid',
+  link: 'link'
+}
+
+const toolbarStyles = {
+  toolbar: 'toolbar'
+}
 
 const linkPlugin = createLinkPlugin({
   theme: linkStyles,
   placeholder: 'http://…'
 });
+
 const inlineToolbarPlugin = createInlineToolbarPlugin({
   theme: { buttonStyles, toolbarStyles },
   structure: [
@@ -42,7 +60,7 @@ export default class ThemedInlineToolbarEditor extends Component {
 
   render() {
     return (
-      <div className={editorStyles.editor} onClick={this.focus}>
+      <div className="editor" onClick={this.focus}>
         <Editor
           editorState={this.state.editorState}
           onChange={this.onChange}

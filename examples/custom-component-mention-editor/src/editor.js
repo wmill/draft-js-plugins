@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { EditorState } from 'draft-js';
 import Editor from 'draft-js-plugins-editor';
 import createMentionPlugin, { defaultSuggestionsFilter } from 'draft-js-mention-plugin';
-import editorStyles from './editorStyles.css';
+
+import 'draft-js-mention-plugin/lib/plugin.css';
+import './editorStyles.css';
 import mentions from './mentions';
 
 const mentionPlugin = createMentionPlugin({
@@ -45,7 +47,7 @@ export default class CustomMentionEditor extends Component {
 
   render() {
     return (
-      <div className={editorStyles.editor} onClick={this.focus}>
+      <div className="editor" onClick={this.focus}>
         <Editor
           editorState={this.state.editorState}
           onChange={this.onChange}

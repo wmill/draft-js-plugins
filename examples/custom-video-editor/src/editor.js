@@ -3,12 +3,13 @@ import { EditorState, convertFromRaw } from 'draft-js';
 import Editor, { composeDecorators } from 'draft-js-plugins-editor';
 
 import createAlignmentPlugin from 'draft-js-alignment-plugin';
-
 import createFocusPlugin from 'draft-js-focus-plugin';
-
 import createResizeablePlugin from 'draft-js-resizeable-plugin';
 import createVideoPlugin from 'draft-js-video-plugin';
-import editorStyles from './editorStyles.css';
+
+import 'draft-js-alignment-plugin/lib/plugin.css';
+import 'draft-js-video-plugin/lib/plugin.css';
+import './editorStyles.css';
 
 const focusPlugin = createFocusPlugin();
 const resizeablePlugin = createResizeablePlugin();
@@ -127,7 +128,7 @@ export default class CustomVideoEditor extends Component {
 
   render() {
     return (
-      <div className={editorStyles.editor} onClick={this.focus} >
+      <div className="editor" onClick={this.focus} >
         <Editor
           editorState={this.state.editorState}
           onChange={this.onChange}

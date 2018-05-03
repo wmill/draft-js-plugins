@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Editor, { createEditorStateWithText } from 'draft-js-plugins-editor';
 import createEmojiPlugin from 'draft-js-emoji-plugin';
-import editorStyles from './editorStyles.css';
+
+import 'draft-js-emoji-plugin/lib/plugin.css';
+import './editorStyles.css';
 
 const emojiPlugin = createEmojiPlugin({
   useNativeArt: true
@@ -30,7 +32,7 @@ export default class CustomEmojiEditor extends Component {
   render() {
     return (
       <div>
-        <div className={editorStyles.editor} onClick={this.focus}>
+        <div className="editor" onClick={this.focus}>
           <Editor
             editorState={this.state.editorState}
             onChange={this.onChange}
@@ -39,7 +41,7 @@ export default class CustomEmojiEditor extends Component {
           />
           <EmojiSuggestions />
         </div>
-        <div className={editorStyles.options}>
+        <div className="options">
           <EmojiSelect />
         </div>
       </div>

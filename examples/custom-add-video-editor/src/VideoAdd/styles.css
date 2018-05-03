@@ -19,7 +19,7 @@
     display: none;
 }
 
-.addVideoButton {
+.addVideoButton, .addVideoPressedButton {
     box-sizing: border-box;
     background: #fff;
     border: 1px solid #ddd;
@@ -35,20 +35,22 @@
     margin: 0;
 }
 
-.addVideoButton:focus {
+.addVideoButton:focus,
+.addVideoPressedButton:focus{
     outline: 0; /* reset for :focus */
 }
 
-.addVideoButton:hover {
+.addVideoButton:hover,
+.addVideoPressedButton:hover{
     background: #f3f3f3;
 }
 
-.addVideoButton:active {
+.addVideoButton:active,
+.addVideoPressedButton:active{
     background: #e6e6e6;
 }
 
 .addVideoPressedButton {
-    composes: addVideoButton;
     background: #ededed;
 }
 

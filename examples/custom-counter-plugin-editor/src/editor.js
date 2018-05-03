@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import Editor, { createEditorStateWithText } from 'draft-js-plugins-editor';
 import createCounterPlugin from 'draft-js-counter-plugin';
-import editorStyles from './editorStyles.css';
-import counterStyles from './counterStyles.css';
+
+import 'draft-js-counter-plugin/lib/plugin.css';
+import './editorStyles.css';
+import './counterStyles.css';
 
 const theme = {
-  counter: counterStyles.counter,
-  counterOverLimit: counterStyles.counterOverLimit,
+  counter: 'counter',
+  counterOverLimit: 'counterOverLimit',
 };
+
 const counterPlugin = createCounterPlugin({ theme });
 const { CharCounter, WordCounter, LineCounter, CustomCounter } = counterPlugin;
 const plugins = [counterPlugin];
@@ -43,7 +46,7 @@ export default class CustomCounterEditor extends Component {
   render() {
     return (
       <div>
-        <div className={editorStyles.editor} onClick={this.focus}>
+        <div className="editor" onClick={this.focus}>
           <Editor
             editorState={this.state.editorState}
             onChange={this.onChange}

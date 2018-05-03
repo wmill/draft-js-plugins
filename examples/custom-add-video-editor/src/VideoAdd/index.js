@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './styles.css';
+import './styles.css';
 
 export default class VideoAdd extends Component {
   // Start the popover closed
@@ -53,14 +53,14 @@ export default class VideoAdd extends Component {
 
   render() {
     const popoverClassName = this.state.open ?
-      styles.addVideoPopover :
-      styles.addVideoClosedPopover;
+      'addVideoPopover' :
+      'addVideoClosedPopover';
     const buttonClassName = this.state.open ?
-      styles.addVideoPressedButton :
-      styles.addVideoButton;
+      'addVideoPressedButton' :
+      'addVideoButton';
 
     return (
-      <div className={styles.addVideo} >
+      <div className="addVideo">
         <button
           className={buttonClassName}
           onMouseUp={this.openPopover}
@@ -75,12 +75,12 @@ export default class VideoAdd extends Component {
           <input
             type="text"
             placeholder="Paste the video url …"
-            className={styles.addVideoInput}
+            className="addVideoInput"
             onChange={this.changeUrl}
             value={this.state.url}
           />
           <button
-            className={styles.addVideoConfirmButton}
+            className="addVideoConfirmButton"
             type="button"
             onClick={this.addVideo}
           >

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-
 import Editor, { createEditorStateWithText } from 'draft-js-plugins-editor';
 
 import createImagePlugin from 'draft-js-image-plugin';
 import ImageAdd from './ImageAdd';
 
-import editorStyles from './editorStyles.css';
+import 'draft-js-image-plugin/lib/plugin.css';
+import './editorStyles.css';
 
 const imagePlugin = createImagePlugin();
 const plugins = [imagePlugin];
@@ -13,7 +13,6 @@ const plugins = [imagePlugin];
 const text = 'Click on the + button below and insert "/images/canada-landscape-small.jpg" to add the landscape image. Alternativly you can use any image url on the web.';
 
 export default class CustomImageEditor extends Component {
-
   state = {
     editorState: createEditorStateWithText(text),
   };
@@ -31,7 +30,7 @@ export default class CustomImageEditor extends Component {
   render() {
     return (
       <div>
-        <div className={editorStyles.editor} onClick={this.focus}>
+        <div className="editor" onClick={this.focus}>
           <Editor
             editorState={this.state.editorState}
             onChange={this.onChange}
