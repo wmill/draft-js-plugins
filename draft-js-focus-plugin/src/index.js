@@ -6,6 +6,7 @@ import createDecorator from './createDecorator';
 import createBlockKeyStore from './utils/createBlockKeyStore';
 import blockInSelection from './utils/blockInSelection';
 import getBlockMapKeys from './utils/getBlockMapKeys';
+import removeBlock from './modifiers/removeBlock';
 import defaultTheme from './style.css';
 
 const focusableBlockIsSelected = (editorState, blockKeyStore) => {
@@ -17,6 +18,8 @@ const focusableBlockIsSelected = (editorState, blockKeyStore) => {
   const block = content.getBlockForKey(selection.getAnchorKey());
   return blockKeyStore.includes(block.getKey());
 };
+
+const deleteCommands = ['backspace', 'backspace-word', 'backspace-to-start-of-line', 'delete', 'delete-word', 'delete-to-end-of-block'];
 
 export default (config = {}) => {
   const blockKeyStore = createBlockKeyStore({});
@@ -30,6 +33,17 @@ export default (config = {}) => {
       if (focusableBlockIsSelected(editorState, blockKeyStore)) {
         setEditorState(insertNewLine(editorState));
         return 'handled';
+      }
+      return 'not-handled';
+    },
+    handleKeyCommand: (command, editorState, { setEditorState }) => {
+      if (deleteCommands.includes(command) && focusableBlockIsSelected(editorState, blockKeyStore)) {
+        const key = editorState.getSelection().getStartKey();
+        const newEditorState = removeBlock(editorState, key);
+        if (newEditorState !== editorState) {
+          setEditorState(newEditorState);
+          return 'handled';
+        }
       }
       return 'not-handled';
     },
